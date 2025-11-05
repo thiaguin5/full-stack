@@ -1,7 +1,10 @@
 body {
-    background: rgb(144, 144, 144);
-}
+    background: url('../img/bg.jpg') no-repeat;
+background-size: cover;
 
+
+}
+    
 #container {
     background: lightslategray;
     /*largura da tela*/
@@ -17,10 +20,20 @@ body {
     /*espaçamento dentro do elemento*/
 }
 
-#container h1 {}
+#container {
+   border: 3px solid rgb(255, 0, 0);
+            max-width: 500px;
+            /*centralizar*/
+            margin: 0 auto;
+            /*cor de fundo*/
+            background-color: rgb(255, 255, 255);        
+            /*espaçamento entre os elementos*/
+            padding: 20px;
+    
+}
 
-#tarefas {
-    border: 2px solid chartreuse;
+#tarefa {
+    border: 2px solid rgb(255, 0, 0);
     padding: 5px;
     border-radius: 5px;
 
@@ -34,4 +47,12 @@ body {
 
 #tarefa::placeholder {
     color: darkgrey;
+}
+
+.btnAdicionar {
+    background: firebrick;
+    padding: 7px;
+    border: 0px;
+    border-radius: 8px;
+
 }
