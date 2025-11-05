@@ -1,5 +1,5 @@
 body {
-    background: url('../img/bg.jpg') no-repeat;
+    background: url('../img/bg-site.jpg') no-repeat green;
 background-size: cover;
 
 
@@ -55,4 +55,9 @@ background-size: cover;
     border: 0px;
     border-radius: 8px;
 
+}
+
+.link{
+    color: chartreuse;
+    
 }
