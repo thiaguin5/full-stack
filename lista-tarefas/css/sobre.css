@@ -1,0 +1,62 @@
+*{
+
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+
+
+body{
+     background: rgb(171, 171, 171);
+     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+.container {
+    
+   background: lightslategray;
+    /*largura da tela*/
+    max-width: 1000px;
+    /*centralizar*/
+    text-align-last: left;
+    padding: 20px;
+    /*tamanho de texto*/
+    font-size: 20px;
+    /*largura na tela*/
+    margin: 0%;
+    border-radius: 60px;
+    /*espaçamento dentro do elemento*/
+    border: 20px solid rgb(255, 55, 55);
+            max-width: 500px;
+            /*centralizar*/
+            margin: 0 auto;
+            /*cor de fundo*/
+            background-color: rgb(255, 255, 255);        
+            /*espaçamento entre os elementos*/
+            padding: 40px;
+}
+
+.container h1 {
+   border: 3px solid rgb(255, 55, 55);
+            max-width: 1000px;
+            /*centralizar*/
+            margin: 0 auto;
+            /*cor de fundo*/
+            background-color: rgb(255, 255, 255);        
+            /*espaçamento entre os elementos*/
+            padding: 20px;
+}
+
+.links a {
+   display: block;
+   padding: 20px;
+   text-decoration: none;
+   font-size: 22px;
+   color: brown;
+    
+}
+.links a:hover{
+    text-decoration: underline;
+    color:chocolate
+}
+      
