@@ -7,7 +7,8 @@
 
 
 body{
-     background: rgb(171, 171, 171);
+     background: url('../img/img3.jpg') no-repeat;
+     background-size: cover;
      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 }
@@ -26,7 +27,7 @@ body{
     margin: 0%;
     border-radius: 60px;
     /*espaçamento dentro do elemento*/
-    border: 20px solid rgb(255, 55, 55);
+    border: 20px solid rgb(192, 17, 17);
             max-width: 500px;
             /*centralizar*/
             margin: 0 auto;
@@ -37,7 +38,7 @@ body{
 }
 
 .container h1 {
-   border: 3px solid rgb(255, 55, 55);
+   border: 3px solid rgb(196, 30, 30);
             max-width: 1000px;
             /*centralizar*/
             margin: 0 auto;
