@@ -28,9 +28,9 @@ if (idade < 16){
 }
      
 else if (idade >= 16 && idade < 18) {
-    alert("voto opcional");
+    alert("voto obrigatório");
 
 } else{
-    alert ("voto obrigatório")
+    alert ("voto opcional")
 
 }
