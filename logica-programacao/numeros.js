@@ -13,8 +13,14 @@ if (numero > 0 ){
     
 }
      
-else if (numero = 0) {
-    alert("esse numero é negativo");
+else if (numero < 0) {
+    alert("o número negativo.");
 
-} 
+}
+
+else{
+    alert("o número é igual a zero")
+}
+
+
 
