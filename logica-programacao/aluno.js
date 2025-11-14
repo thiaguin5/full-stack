@@ -13,7 +13,7 @@ Crie um programa que peça a nota de um aluno (de 0 a 10) e mostre:
 
 let nota = Number(prompt("qual a sua nota escolar?")) 
 
-if (nota >= 6 ){
+if (nota < 6 ){
      alert("não passou de ano");
 
 }else if (nota >= 4 && nota < 5.9) {
