@@ -19,8 +19,8 @@ let anoInicio= Number (prompt("digite o ano da primeira eleição que você acom
 let anoAtual = 2025;
 
 while (anoInicio <= anoAtual) {
-    let tipoAno = (anoInicio % 2 === 0) ? "ano par": "ano impar";
+    let tipoAno = (anoInicio % 2 === 0) ? "ano impar": "ano par";
 
     document.write("Ano de eleição: ", anoInicio + "<hr>" + tipoAno + "<br>");
-    anoInicio = anoInicio + 2;
+    anoInicio = anoInicio + 3;
 }
