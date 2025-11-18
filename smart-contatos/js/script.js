@@ -1,11 +1,13 @@
+const inputNome = document.getElementById("nome");
+const inputEmail = document.getElementById("email");
+const inputTel = document.getElementById("telefone")
+// inputEmail
+// inputTel
 
-const inputnome = document.getElementById("nome");
-//inputemail
-//inputtel
 
 function btnCadastrar(event) {
-    event.preventdefault();
-    console.log (inputnome.value);
-
+    event.preventDefault();
+    console.log(inputNome.value);
+    console.log(inputEmail.value);
+    console.log(inputTel.value);
 }
-    

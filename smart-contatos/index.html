@@ -1,52 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>smart-contatos</title>
+    <title>Smart Contatos</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="./css/reset.css">
 </head>
-
 <body>
     <main class="container">
-        <h1>cadastro de contatos</h1>
+        <h1>Cadastro de Contatos</h1>
 
         <form class="form">
             <section class="group">
-                <label for="nome">nome</label>
-                <input type="text" id="nome" placeholder="digite seu nome" />
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" placeholder="Digite seu nome..." />
+            </section>
 
-                <section class="group">
-                    <label for="email">email</label>
-                    <input type="text" id="email" placeholder="digite seu email" />
+            <section class="group">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="Digite seu email..."  />
+            </section>
 
-                    <section class="group">
-                        <label for="telefone">telefone</label>
-                        <input type="tel" id="telefone" placeholder="digite seu telefone" />
+            <section class="group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" placeholder="Digite seu telefone..."  />
+            </section>
 
-                    </section>
-
-                    <button type="submit" onclick="btnCadastrar"(event)>cadastrar</button>
-
+            <button type="submit" onclick="btnCadastrar(event)">Cadastrar</button>
         </form>
-        <h2 class="h2">lista de contatos</h2>
+
+        <h2 class="h2">Lista de Contatos</h2>
 
         <ul class="lista">
-            <!-- aqui a lista vai aparecer(futuramente com js)-->
-             
-            <li>a lista aparecerá aqui...</li>
+            <!-- Aqui a lista vai aparecer (Futuramente com JS) -->
+            <li>A lista aparecerá aqui...</li>
         </ul>
 
-
-
     </main>
-
+    
     <script src="./js/script.js"></script>
-
-
-
 </body>
-
 </html>
