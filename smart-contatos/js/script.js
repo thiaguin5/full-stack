@@ -8,43 +8,40 @@ form.addEventListener("submit" , function(event) {
 
 
 
-//validação do formulário
-/*
-
-se o input for vazio,adicionar uma mensagem
-
-*/
-
      console.log("Nome", inputNome.value)
      console.log("Email", inputEmail.value)
      console.log("telefone", inputTel.value)
      
 })
 
-if (inputNome.value =="") {
-alert("preencha a caixa")
-return false;
-
-}
-
-if (inputEmail.value =="") {
-alert("preencha a caixa")
-return false;
-
-}
-
-if (inputTel.value =="") {
-alert("preencha a caixa")
-return false;
-
-
+if (inputNome.value =="" || inputEmail.value == "" || inputTel.value) {
+    alert("digite seus dados")
+    return false;
 }
 
 
+//criar li 
 
-// function btnCadastrar(event) {
-//    event.preventDefault();
-//    console.log(inputNome.value);
-//  console.log(inputEmail.value);
-//    console.log(inputTel.value);
-// }
+const li = document.createElement("li")
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
