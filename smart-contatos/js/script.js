@@ -3,6 +3,7 @@ const lista = document.querySelector(".lista");
 const inputNome = document.getElementById("nome");
 const inputEmail = document.getElementById("email");
 const inputTel = document.getElementById("telefone");
+const listaMsg =  document.querySelector("listamsg");
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -12,6 +13,21 @@ form.addEventListener("submit", function(event) {
         alert("Digite seus dados");
         return false;
     }
+
+    //condição, para retirar a li com lista-Msg
+    //( se listaMsg === true )
+
+    if (listaMsg) {
+        const listaMsg = document.querySelector("listaMsg");
+        listaMsg.remove(); 
+    
+
+// removendo lista
+
+    }
+
+
+    
 
     // Criar LI
     const li = document.createElement("li");
