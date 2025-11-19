@@ -4,6 +4,7 @@ const inputNome = document.getElementById("nome");
 const inputEmail = document.getElementById("email");
 const inputTel = document.getElementById("telefone");
 const listaMsg =  document.querySelector("listamsg");
+const endereco = document.getElementById("endereco")
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -21,6 +22,7 @@ form.addEventListener("submit", function(event) {
         listaMsg.remove(); 
     }
 
+
     //criando botão excluir
     const btnExcluir = document.createElement("button");
     btnExcluir.textContent = "Excluir"
@@ -35,13 +37,20 @@ form.addEventListener("submit", function(event) {
     //criando função para excluir
 
     btnExcluir.addEventListener("click",function() {
-        alert("testee")
+        const confirmar = confirm("tem certeza que deseja excluir?")
+        
+
+        if (confirmar) {
+        li.remove();
+
+    }
     })
 
     li.innerHTML = `
         <span class="contato-nome">${inputNome.value}</span>
         <span class="contato-email">${inputEmail.value}</span>
         <span class="contato-telefone">${inputTel.value}</span>
+        <span class="contato-endereco">${InputEndereco.value}</span>
     `;
 
     console.log(li)
