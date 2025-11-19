@@ -1,29 +1,37 @@
-const form = document.querySelector ("form")
+const form = document.querySelector("form");
+const lista = document.querySelector(".lista");
 const inputNome = document.getElementById("nome");
 const inputEmail = document.getElementById("email");
 const inputTel = document.getElementById("telefone");
 
-form.addEventListener("submit" , function(event) {
-     event.preventDefault();
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Validação do formulário
+    if (inputNome.value == "" || inputEmail.value == "" || inputTel.value == "") {
+        alert("Digite seus dados");
+        return false;
+    }
+
+    // Criar LI
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+        <span class="contato-nome">${inputNome.value}</span>
+        <span class="contato-email">${inputEmail.value}</span>
+        <span class="contato-telefone">${inputTel.value}</span>
+    `;
+
+    console.log(li)
 
 
+    // appendChild()
+    lista.appendChild(li)
 
-     console.log("Nome", inputNome.value)
-     console.log("Email", inputEmail.value)
-     console.log("telefone", inputTel.value)
-     
+    // Limpar inputs
+    form.reset();
+
 })
-
-if (inputNome.value =="" || inputEmail.value == "" || inputTel.value) {
-    alert("digite seus dados")
-    return false;
-}
-
-
-//criar li 
-
-const li = document.createElement("li")
-
 
 
 
