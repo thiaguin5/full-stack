@@ -4,13 +4,13 @@ const inputNome = document.getElementById("nome");
 const inputEmail = document.getElementById("email");
 const inputTel = document.getElementById("telefone");
 const listaMsg =  document.querySelector("listamsg");
-const endereco = document.getElementById("endereco")
+const inputEndereco = document.getElementById("endereco")
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
 
     // Validação do formulário
-    if (inputNome.value == "" || inputEmail.value == "" || inputTel.value == "") {
+    if (inputNome.value == "" || inputEmail.value == "" || inputTel.value == "" || inputEndereco.value == "") {
         alert("Digite seus dados");
         return false;
     }
@@ -50,7 +50,7 @@ form.addEventListener("submit", function(event) {
         <span class="contato-nome">${inputNome.value}</span>
         <span class="contato-email">${inputEmail.value}</span>
         <span class="contato-telefone">${inputTel.value}</span>
-        <span class="contato-endereco">${InputEndereco.value}</span>
+        <span class="contato-endereco">${inputEndereco.value}</span>
     `;
 
     console.log(li)
