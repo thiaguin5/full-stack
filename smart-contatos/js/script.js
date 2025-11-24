@@ -4,7 +4,7 @@ const inputNome = document.getElementById("nome");
 const inputEmail = document.getElementById("email");
 const inputTel = document.getElementById("telefone");
 const listaMsg =  document.querySelector("listamsg");
-const inputEndereco = document.getElementById("endereco")
+const inputEndereco = document.getElementById("endereco");
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
