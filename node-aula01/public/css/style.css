@@ -1,0 +1,23 @@
+body {
+
+    background-color: rgb(160, 160, 160);
+
+}
+
+.container {
+
+    background: rgb(0, 128, 255);
+    text-align: center;
+    max-width: 400px;
+    border-radius: 15px;
+   
+}
+
+.btnAdicionar {
+    background: firebrick;
+    padding: 7px;
+    border: 0px;
+    border-radius: 8px;
+
+}
+   
