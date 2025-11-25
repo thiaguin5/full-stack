@@ -1,38 +1,51 @@
-const express = require ("express")
-const app = express ()
+const express  = require("express");
+const app = express();
 const port = 3000;
 
+// Variável com os dados produtos
 const produtos = [
-    {id: 1, nome: 'produto a', preco:100},
-    {id: 2, nome: 'produto b', preco:150},
-    {id: 3, nome: 'produto c', preco:200},
-]
+    { id: 1, nome: 'Produto A', preco: 100 },
+    { id: 2, nome: 'Produto B', preco: 150 },
+    { id: 3, nome: 'Produto C', preco: 200 },
+];
+
+//variavel de times
+const times = [
+
+    {id: 1, nome: 'santos', ano: 1912},
+    {id: 2, nome: 'santos', ano: 1910},
+    {id: 3, nome: 'santos', ano: 1904},
+     
+
+];
+
+ 
 
 
+// Criar função
+// Rota principal
+app.get('/', (req, res) => {
+    res.send('Bem vindo ao servidor Node.js');
+});
 
-//criar função
-//rota principal
-app.get('/',(req, res) => {
-    res.send('bem vindo ao servidor Node.js');
-
-})
-
-// rota produtos
+// Rota de produtos
 app.get('/produtos', (req, res) => {
-    res.send(produtos)
+    res.send(produtos);
+});
+
+// Rota home
+app.get('/home', (req, res) => {
+    //console.log("ola: ",__dirname);
+    res.sendFile(__dirname + '/public/home.html');
+});
+
+//rota times
+app.get('/times', (req, res) => {
+    res.send(times);
 
 })
 
-//rota home
-app.get('/home,', (req, res) => {   
-    //console.log("olá",__dirname + '')
-    res.sendFile(__dirname + '/public/home.html')   
-})
-
-//executando o servidor
+// Executando o sevidor
 app.listen(port, () => {
-    console.log(`servidor rodando em https://localhost:${port}`)
-
-
-})
-
+    console.log(`Servidor rodando em http://localhost:${port}`);
+});
