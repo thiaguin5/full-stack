@@ -1,15 +1,20 @@
 body {
 
+      background: url('../img/img3.jpg') no-repeat;
+     background-size: cover;
     background-color: rgb(160, 160, 160);
+    font-family: Georgia, 'Times New Roman', Times, serif;
 
 }
 
 .container {
 
     background: rgb(0, 128, 255);
+    font-family: initial;
     text-align: center;
-    max-width: 400px;
+    max-width: 1000px;
     border-radius: 15px;
+    font-size: 50px;
    
 }
 
@@ -19,5 +24,18 @@ body {
     border: 0px;
     border-radius: 8px;
 
+}
+
+
+
+.img4 {
+
+
+    background-image: url('../img/img4.jpg');
+    height: 500px;
+    max-width: 1000px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 40px;
 }
    
