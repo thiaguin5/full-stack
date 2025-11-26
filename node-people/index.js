@@ -11,18 +11,48 @@ const nomes = [
   { id: 5, nome: "Doris", idade: "33" },
 ];
 
+//criando funções auxiliares
+//retornar o objeto por id
+
+function buscarNomePorId(id) {
+    return nomes.filter((nome) => nome.id == id)
+
+}
+
 app.listen (port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 })
+
+//rota principal
+app.get("/", (req, res) => {
+    res.send("Bem vindo ao servidor principal!!!!!");
+});
 
 //rota de teste
 app.get("/teste", (req, res) => {
     res.send("Rota de teste funcionando!");
 });
 
-//rota para listar nomes
-app.get("/nomes", (req, res) => {
+//buscando nomes (lista nomes)
+app.get("/listanomes", (req, res) => {
     res.json(nomes);
+});
+
+//buscando por id
+app.get("/listanomes/:id", (req, res) => {
+    let index = req.params.id;
+
+    res.json(buscarNomePorId(index));
+
+
+
+
+})
+
+
+
+app.listen(port, () => {
+    console.log(`Servidor rodando em http://localhost:${port}`);
 });
 
 
