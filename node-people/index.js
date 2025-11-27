@@ -2,6 +2,10 @@ const express = require ("express");
 const app= express();
 const port = 3000;
 
+
+//indicar para express ler body com json
+app.use (express.json());
+
 // mock
 const nomes = [
   { id: 1, nome: "Fernanda", idade: "18" },
@@ -9,6 +13,16 @@ const nomes = [
   { id: 3, nome: "Pedro", idade: "56" },
   { id: 4, nome: "Samuel", idade: "45" },
   { id: 5, nome: "Doris", idade: "33" },
+];
+
+const times = [
+  { id: 1, nome: "Corinthians", estado: "SP", titulos: 7 },
+  { id: 2, nome: "Palmeiras", estado: "SP", titulos: 11 },
+  { id: 3, nome: "Santos", estado: "SP", titulos: 8 },
+  { id: 4, nome: "Flamengo", estado: "RJ", titulos: 7 },
+  { id: 5, nome: "Vasco", estado: "RJ", titulos: 4 },
+  { id: 6, nome: "Atlético Mineiro", estado: "MG", titulos: 3 },
+  { id: 7, nome: "Cruzeiro", estado: "MG", titulos: 4 },
 ];
 
 //criando funções auxiliares
@@ -24,7 +38,6 @@ function buscarNomePorId(id) {
 
 function buscarIdNomes(id) {
     return nomes.findIndex((nome) => nome.id == id)
-
 
  
 }
