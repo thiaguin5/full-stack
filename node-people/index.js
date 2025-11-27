@@ -24,7 +24,7 @@ function buscarNomePorId(id) {
 
 function buscarIdNomes(id) {
     return nomes.findIndex((nome) => nome.id == id)
-    
+
 
  
 }
@@ -57,6 +57,16 @@ app.get("/listanomes/:id", (req, res) => {
 
     res.json(buscarNomePorId(index));
 
+
+})
+
+
+
+//criando post para cadastrar
+
+app.post("/listanomes" , (req, res) => {
+    nomes.push(req.body)
+    res.status(201).send("nomes cadastrado com sucesso!")
 
 })
 
