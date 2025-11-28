@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
-const PORT = 3000; // executar na porta 3000
+app.use(express.json()); // necessário para ler JSON no body
+const PORT = 3000;
 
-// mock
+// ---------------- MOCKS ----------------
+
 const nomes = [
   { id: 1, nome: "Fernanda", idade: "18" },
   { id: 2, nome: "Caio", idade: "23" },
@@ -10,7 +12,6 @@ const nomes = [
   { id: 4, nome: "Samuel", idade: "45" },
   { id: 5, nome: "Doris", idade: "70" },
 ];
-
 
 const times = [
   { id: 1, nome: "Corinthians", estado: "SP", titulos: 7 },
@@ -21,121 +22,112 @@ const times = [
   { id: 6, nome: "Atlético Mineiro", estado: "MG", titulos: 3 },
   { id: 7, nome: "Cruzeiro", estado: "MG", titulos: 4 },
 ];
-      
 
-// Criando Funções Auxiliares
-// Retornar o objeto por Id
+// ---------------- FUNÇÕES AUXILIARES ----------------
+
+// NOMES
 function buscarNomePorId(id) {
-  return nomes.filter((nome) => nome.id == id)
+  return nomes.filter((nome) => nome.id == id);
 }
 
-// Pegar a posição ou index do elemento do Array por id
 function buscarIdNomes(id) {
   return nomes.findIndex((nome) => nome.id == id);
 }
 
-// Rota Principal
-app.get("/", (req, res) => {
-  res.send("Rota principal");
-});
-
-// Rota teste
-app.get("/teste", (req, res) => {
-  res.send("API nodePeople está funcionando!");
-});
-
-// Buscando nomes (listaNomes)
-app.get("/listaNomes", (req, res) => {
-  res.send(nomes);
-});
-
-// Buscando por ID
-app.get("/listaNomes/:id", (req, res) => {
-  let index = req.params.id;
-
-  res.json(buscarNomePorId(index))
-});
-
-// Criando Post para cadastrar
-app.post("/listaNomes", (req, res) => {
-   nomes.push(req.body);
-   res.status(201).send('Nomes cadastrado com sucesso!');
-});
-
-
-// Criando Rota Excluir
-app.delete("/listaTimes/:id", (req, res) => {
-  let index = buscarIdTimes(req.params.id);
-  times.splice(index, 1);
-  res.send(`Nomes com id ${req.params.id} excluida com sucesso!`);
-});
-
-
-
-
-
-//  let index = buscarIdNomes(req.params.id);
-//  nomes.splice(index, 1);
-//res.send(`Nomes com id ${req.params.id} excluida com sucesso!`);
-
-
-
-app.listen(PORT, () => {
-  console.log(`Servidor rodando no endereço http://localhost:${PORT}`);
-});
-
-
-
-
-//criando rotas para times 
-
-
-
-// Criando Funções Auxiliares
-// Retornar o objeto por Id
+// TIMES
 function buscarTimePorId(id) {
-  return times.filter((time) => time.id == id)
+  return times.filter((time) => time.id == id);
 }
 
-// Pegar a posição ou index do elemento do Array por id
 function buscarIdTimes(id) {
   return times.findIndex((time) => time.id == id);
 }
 
-// Rota Principal
+// ---------------- ROTAS GERAIS ----------------
+
 app.get("/", (req, res) => {
   res.send("Rota principal");
 });
 
-// Rota teste
 app.get("/teste", (req, res) => {
   res.send("API nodePeople está funcionando!");
 });
 
-// Buscando times (listaTimes)
+// ---------------- ROTAS NOMES ----------------
+
+// Buscar todos
+app.get("/listaNomes", (req, res) => {
+  res.send(nomes);
+});
+
+// Buscar por ID
+app.get("/listaNomes/:id", (req, res) => {
+  res.json(buscarNomePorId(req.params.id));
+});
+
+// Cadastrar
+app.post("/listaNomes", (req, res) => {
+  nomes.push(req.body);
+  res.status(201).send("Nome cadastrado com sucesso!");
+});
+
+// Editar
+app.put("/listaNomes/:id", (req, res) => {
+  let index = buscarIdNomes(req.params.id);
+
+  if (index === -1) {
+    return res.status(404).send("Nome não encontrado!");
+  }
+
+  nomes[index].nome = req.body.nome;
+  nomes[index].idade = req.body.idade;
+
+  res.json(nomes);
+});
+
+// Excluir
+app.delete("/listaNomes/:id", (req, res) => {
+  let index = buscarIdNomes(req.params.id);
+
+  if (index === -1) {
+    return res.status(404).send("Nome não encontrado!");
+  }
+
+  nomes.splice(index, 1);
+  res.send(`Nome com id ${req.params.id} excluído com sucesso!`);
+});
+
+// ---------------- ROTAS TIMES ----------------
+
+// Buscar todos
 app.get("/listaTimes", (req, res) => {
   res.send(times);
 });
 
-// Buscando por ID
+// Buscar por ID
 app.get("/listaTimes/:id", (req, res) => {
-  let index = req.params.id;
-
-  res.json(buscarTimePorId(index))
+  res.json(buscarTimePorId(req.params.id));
 });
 
-// Criando Post para cadastrar
+// Cadastrar
 app.post("/listaTimes", (req, res) => {
-   times.push(req.body);
-   res.status(201).send('Time cadastrado com sucesso!');
+  times.push(req.body);
+  res.status(201).send("Time cadastrado com sucesso!");
 });
 
-// Criando Rota Excluir
+// Excluir
 app.delete("/listaTimes/:id", (req, res) => {
   let index = buscarIdTimes(req.params.id);
+
+  if (index === -1) {
+    return res.status(404).send("Time não encontrado!");
+  }
+
   times.splice(index, 1);
   res.send(`Time com id ${req.params.id} excluído com sucesso!`);
 });
+
+// ---------------- INICIAR SERVIDOR ----------------
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando no endereço http://localhost:${PORT}`);
