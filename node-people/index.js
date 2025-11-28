@@ -25,81 +25,54 @@ const times = [
   { id: 7, nome: "Cruzeiro", estado: "MG", titulos: 4 },
 ];
 
-//criando funções auxiliares
-//retornar o objeto por id
-
+// Criando Funções Auxiliares
+// Retornar o objeto por Id
 function buscarNomePorId(id) {
-    return nomes.filter((nome) => nome.id == id)
-
+  return nomes.filter((nome) => nome.id == id)
 }
 
-
-//pegar a posição ou index do elemento array por id
-
+// Pegar a posição ou index do elemento do Array por id
 function buscarIdNomes(id) {
-    return nomes.findIndex((nome) => nome.id == id)
-
- 
+  return nomes.findIndex((nome) => nome.id == id);
 }
 
-
-
-app.listen (port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-})
-
-//rota principal
+// Rota Principal
 app.get("/", (req, res) => {
-    res.send("Bem vindo ao servidor principal!!!!!");
+  res.send("Rota principal");
 });
 
-
-//rota de teste
+// Rota teste
 app.get("/teste", (req, res) => {
-    res.send("Rota de teste funcionando!");
+  res.send("API nodePeople está funcionando!");
 });
 
-//buscando nomes (lista nomes)
-app.get("/listanomes", (req, res) => {
-    res.json(nomes);
+// Buscando nomes (listaNomes)
+app.get("/listaNomes", (req, res) => {
+  res.send(nomes);
 });
 
-//buscando por id
-app.get("/listanomes/:id", (req, res) => {
-    let index = req.params.id;
+// Buscando por ID
+app.get("/listaNomes/:id", (req, res) => {
+  let index = req.params.id;
 
-    res.json(buscarNomePorId(index));
+  res.json(buscarNomePorId(index))
+});
 
-
-})
-
-
-
-//criando post para cadastrar
-
-app.post("/listanomes" , (req, res) => {
-    nomes.push(req.body)
-    res.status(201).send("nomes cadastrado com sucesso!")
-
-})
-
-//rota excluir
-app.delete("/listanomes/:id" , (req, res) => {
-let index = buscarIdNomes(req.params.id);
-nomes.splice(index, 1)
-res.send(`nomes com id ${req.params.id} foi excluído com sucesso!`);
-    
+// Criando Post para cadastrar
+app.post("/listaNomes", (req, res) => {
+   nomes.push(req.body);
+   res.status(201).send('Nomes cadastrado com sucesso!');
 });
 
 
-
-
-app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`);
+// Criando Rota Excluir
+app.delete("/listaNomes/:id", (req, res) => {
+  let index = buscarIdNomes(req.params.id);
+  nomes.splice(index, 1);
+  res.send(`Nomes com id ${req.params.id} excluida com sucesso!`);
 });
 
 
-
-
-
-
+app.listen(PORT, () => {
+  console.log(`Servidor rodando no endereço http://localhost:${PORT}`);
+});
