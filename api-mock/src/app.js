@@ -42,3 +42,8 @@ endereco: "Rua Central, 999"
 }
 ];
 
+
+//------------FUNÇÕES DE CADASTRO-----------------
+
+
+
