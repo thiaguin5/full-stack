@@ -97,6 +97,13 @@ app.delete("/listaNomes/:id", (req, res) => {
   res.send(`Nome com id ${req.params.id} excluído com sucesso!`);
 });
 
+//alterar id
+app.put("/listaNomes/:is", (req, res)=> {
+  let index = buscarIdNomes(req.params.id);
+  nomes[index].nome = req.body.nome;
+  nomes[index].idade = req.body.idade;
+  res.json(nomes);
+})
 // ---------------- ROTAS TIMES ----------------
 
 // Buscar todos
@@ -132,3 +139,5 @@ app.delete("/listaTimes/:id", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor rodando no endereço http://localhost:${PORT}`);
 });
+
+
