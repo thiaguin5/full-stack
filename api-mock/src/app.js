@@ -45,5 +45,65 @@ endereco: "Rua Central, 999"
 
 //------------FUNÇÕES DE CADASTRO-----------------
 
+function buscarTodosCadastros() {
+    return cadastros;
+}
+
+function buscarCadastroPorId(id) {
+    return cadastros.findIndex(cadastro => cadastro.id === id);
+}
 
 
+//------------ROTAS DE CADASTRO-----------------
+
+
+//rota principal
+app.get("/", (req, res) => {
+  res.send("Rota principal");
+});
+
+
+//rota para buscar todos os cadastros
+app.get("/cadastros", (req, res) => {
+    const todosCadastros = buscarTodosCadastros();
+    res.json(todosCadastros);
+})
+
+//rota para buscar cadastro por id
+app.get("/cadastros/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const indice = buscarCadastroPorId(id);
+
+})
+
+// routes/usuarios.js
+const express = require("express");
+const router = express.Router();
+const Usuario = require("../models/Usuario");
+
+// EDITAR cadastro por ID
+
+app.put("/cadastro/:id", (req, res) => {
+  let app = buscarIdNomes(req.params.id);
+
+  if (app === -1) {
+    return res.status(404).send("Cadastro não encontrado!");
+  }
+
+  // Atualizando os campos
+  cadastros[app].nome = req.body.nome;
+  cadastros[app].telefone = req.body.telefone;
+  cadastros[app].cpf = req.body.cpf;
+  cadastros[app].email = req.body.email;
+  cadastros[app].idade = req.body.idade;
+  cadastros[app].endereco = req.body.endereco;
+
+  res.json(cadastros [app]);
+});
+
+//rota para deletar cadastro por id
+app.delete("/cadastros/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const indice = buscarCadastroPorId(id);
+})
+   
