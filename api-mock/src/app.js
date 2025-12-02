@@ -65,45 +65,44 @@ app.get("/", (req, res) => {
 
 //rota para buscar todos os cadastros
 app.get("/cadastros", (req, res) => {
-    const todosCadastros = buscarTodosCadastros();
-    res.json(todosCadastros);
+    res.json(cadastros);
 })
 
 //rota para buscar cadastro por id
 app.get("/cadastros/:id", (req, res) => {
-    const id = parseInt(req.params.id);
-    const indice = buscarCadastroPorId(id);
+  res.json(buscarCadastroPorId(req.params.id));
+});
 
-})
-
-// routes/usuarios.js
-const express = require("express");
-const router = express.Router();
-const Usuario = require("../models/Usuario");
 
 // EDITAR cadastro por ID
 
-app.put("/cadastro/:id", (req, res) => {
-  let app = buscarIdNomes(req.params.id);
+app.put("/cadastros/:id", (req, res) => {
+  let index = buscarIdCadastros(req.params.id);
 
-  if (app === -1) {
-    return res.status(404).send("Cadastro não encontrado!");
+  if (index === -1) {
+    return res.status(404).send(`Cadastro não encontrado!`);
   }
 
-  // Atualizando os campos
-  cadastros[app].nome = req.body.nome;
-  cadastros[app].telefone = req.body.telefone;
-  cadastros[app].cpf = req.body.cpf;
-  cadastros[app].email = req.body.email;
-  cadastros[app].idade = req.body.idade;
-  cadastros[app].endereco = req.body.endereco;
+  cadastros[index].nome = req.body.nome;
+  cadastros[index].telefone = req.body.telefone;
+  cadastros[index].cpf = req.body.cpf;
+  cadastros[index].email = req.body.email;
+  cadastros[index].idade = req.body.idade;
+  cadastros[index].endereco = req.body.endereco;
 
-  res.json(cadastros [app]);
+  res.json(cadastros[index]);
 });
+
 
 //rota para deletar cadastro por id
 app.delete("/cadastros/:id", (req, res) => {
     const id = parseInt(req.params.id);
     const indice = buscarCadastroPorId(id);
 })
+
+app.post("/cadastros", (req, res) => {
+  cadastros.push(req.body);
+  res.status(201).send("Cadastro realizado com sucesso!");
+});
+
    
