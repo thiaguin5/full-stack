@@ -1,16 +1,7 @@
-import expresss from "express"
-const app = expresss();
+import express from "express";
+const app = express();
 
-app.get ("/", (req, res) => {
-
-    res.send("ola node .js");
-})
-
-export default app;
-
-
-//------------CONST DE CADASTROS-----------------
-
+app.use(express.json());
 
 const cadastros = [
 {
@@ -42,67 +33,56 @@ endereco: "Rua Central, 999"
 }
 ];
 
-
-//------------FUNÇÕES DE CADASTRO-----------------
-
-function buscarTodosCadastros() {
-    return cadastros;
-}
-
 function buscarCadastroPorId(id) {
-    return cadastros.findIndex(cadastro => cadastro.id === id);
+    return cadastros.filter((cadastro) => cadastro.id == id)
 }
 
+function buscarIdCadastros(id) {
+    return cadastros.findIndex((cadastro) => cadastro.id == id)
+}
 
-//------------ROTAS DE CADASTRO-----------------
-
-
-//rota principal
 app.get("/", (req, res) => {
-  res.send("Rota principal");
+    res.send("Olá Node js");
+});
+
+app.get("/listaCadastros", (req, res) => {
+    res.send(cadastros);
 });
 
 
-//rota para buscar todos os cadastros
-app.get("/cadastros", (req, res) => {
+app.get("/listaCadastros/:id", (req, res) => {
+    let index = req.params.id;
+
+    res.json(buscarCadastroPorId(index))
+});
+
+app.post("/listaCadastros", (req, res) => {
+   cadastros.push(req.body)
+   res.status(201).send('Cadastrado com sucesso') 
+});
+
+app.delete("/listaCadastros/:id", (req, res) => {
+    let id = req.params.id;
+    let index = buscarIdCadastros(id)
+
+    if (index === -1) {
+        return res.status(404).send(`Nenhum cadastro com id ${id} encontrado`)
+    }
+
+    cadastros.splice(index, 1);
+    res.send(`Cadastro com id ${id} deletado com sucesso`)
+});
+
+app.put("/listaCadastros/:id", (req, res) => {
+    let index = buscarIdCadastros(req.params.id);
+    cadastros[index].nome = req.body.nome;
+    cadastros[index].telefone = req.body.telefone;
+    cadastros[index].cpf = req.body.cpf;
+    cadastros[index].email = req.body.email;
+    cadastros[index].idade = req.body.idade;
+    cadastros[index].endereco = req.body.endereco;
+
     res.json(cadastros);
-})
-
-//rota para buscar cadastro por id
-app.get("/cadastros/:id", (req, res) => {
-  res.json(buscarCadastroPorId(req.params.id));
 });
 
-
-// EDITAR cadastro por ID
-
-app.put("/cadastros/:id", (req, res) => {
-  let index = buscarIdCadastros(req.params.id);
-
-  if (index === -1) {
-    return res.status(404).send(`Cadastro não encontrado!`);
-  }
-
-  cadastros[index].nome = req.body.nome;
-  cadastros[index].telefone = req.body.telefone;
-  cadastros[index].cpf = req.body.cpf;
-  cadastros[index].email = req.body.email;
-  cadastros[index].idade = req.body.idade;
-  cadastros[index].endereco = req.body.endereco;
-
-  res.json(cadastros[index]);
-});
-
-
-//rota para deletar cadastro por id
-app.delete("/cadastros/:id", (req, res) => {
-    const id = parseInt(req.params.id);
-    const indice = buscarCadastroPorId(id);
-})
-
-app.post("/cadastros", (req, res) => {
-  cadastros.push(req.body);
-  res.status(201).send("Cadastro realizado com sucesso!");
-});
-
-   
+export default app;
